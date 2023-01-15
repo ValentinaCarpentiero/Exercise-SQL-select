@@ -5,6 +5,7 @@ public class Main {
     static final String URL = "jdbc:mysql://localhost:3306/newdb";
     static final String USER = "developer";
     static final String PASSWORD = "userpasw";
+    static final String SELECT_FROM_STUDENTS = "SELECT last_name, first_name FROM students";
 
 
     public static void main(String[] args) {
@@ -12,7 +13,7 @@ public class Main {
         ArrayList<String> surnames = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-        PreparedStatement preparedStatement = conn.prepareStatement("SELECT last_name, first_name FROM students")) {
+        PreparedStatement preparedStatement = conn.prepareStatement(SELECT_FROM_STUDENTS)) {
 
             ResultSet result = preparedStatement.executeQuery();
 
