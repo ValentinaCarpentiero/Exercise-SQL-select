@@ -13,9 +13,9 @@ public class Main {
         ArrayList<String> surnames = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-        PreparedStatement preparedStatement = conn.prepareStatement(SELECT_FROM_STUDENTS)) {
+        Statement statement = conn.createStatement()) {
 
-            ResultSet result = preparedStatement.executeQuery();
+            ResultSet result = statement.executeQuery(SELECT_FROM_STUDENTS);
 
             while (result.next()) {
                 System.out.println("Extracted name: " + result.getString("first_name"));
